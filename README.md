@@ -11,25 +11,24 @@ In ethereum, you pay gas for every storage slot you use.
 A slot is of 256 bits, and you can pack as many variables as you want in it. 
 Packing is done by solidity compiler and optimizer automatically, 
 you just need to declare the packable functions consecutively.
-
 The below code is an example of poor code and will consume 3 storage slot
 ```
 
-```js
+``js
 uint8 numberOne;
 uint256 bigNumber;
 uint8 numberTwo;
-```
+``
 
 ```
 A much more efficient way to do this in solidity will be
 ```
 
-```js
+``js
 uint8 numberOne;
 uint8 numberTwo;
 uint256 bigNumber;
-```
+``
 
 ```
 This small change will save you a lot of gas as it will now only need 2 slots to store 
@@ -74,7 +73,7 @@ When using logical disjunction (||), logical conjunction (&&), make sure to orde
 
 Changing storage data costs a lot more gas than changing memory or stack variables so you should update the storage variable after all the calculations rather than updating it on every calculation. The following solidity code will help you understand the difference between a poor code and better-optimized code
 
-```js
+``js
 contract Demo
 {
     uint internal counter;
@@ -100,7 +99,7 @@ contract Demo
     }
     // I know, you don't need a loop for this :/
 }
-```
+``
 
 ## Solidity tips and tricks to save gas and reduce bytecode size
 
